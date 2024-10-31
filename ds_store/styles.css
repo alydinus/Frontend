@@ -19,6 +19,7 @@ body {
     justify-content: center;
     height: 100vh;
 }
+
 a {
     text-decoration: none;
     outline: none;
@@ -44,13 +45,13 @@ ul li:hover a {
     opacity: 1;
 }
 
-.selector-menu {
+.selector {
     display: flex;
     align-items: center;
     margin-bottom: 25px;
 }
 
-.selector-menu a {
+.selector a {
     background: rgba(0, 0, 0, 0.3);
     display: flex;
     align-items: center;
@@ -59,61 +60,87 @@ ul li:hover a {
     height: 60px;
 }
 
-.selector-menu a:hover:not(:focus) {
+.selector a:hover:not(:focus) {
     background: rgba(0, 0, 0, 0.6);
 }
 
-.selector-menu a:focus {
+.selector a:focus {
     transform: scale(1.2);
     background: rgba(0, 0, 0, 0.9);
     box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.6);
 }
-a {
-    text-decoration: none;
-    outline: none;
+
+.menu {
+    width: 300px;
 }
 
-ul {
-    list-style: none;
+.head {
+    background: url("img/food.jpg") no-repeat right/cover;
+    height: 150px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    position: relative;
 }
 
-ul li {
+.overlay {
+    background: rgba(0, 0, 0, 0.2);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.eda {
+    color: #fff;
+    position: absolute;
+    left: 20px;
+}
+
+.eda h1 {
+    font-size: 1.6rem;
+}
+
+.eda div {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
 }
 
-ul li:hover p {
-    transform: scale(1.7);
-    opacity: 1;
+.eda p {
+    font-size: 0.8rem;
 }
 
-ul li:hover a {
-    opacity: 1;
+.eda img {
+    width: 15px;
 }
 
-.selector-menu {
-    display: flex;
-    align-items: center;
-    margin-bottom: 25px;
+.list a,
+.list p {
+    color: #000;
+    opacity: 0.4;
 }
 
-.selector-menu a {
-    background: rgba(0, 0, 0, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 75px;
-    height: 60px;
+.item {
+    background: #fff;
+    padding: 20px;
 }
 
-.selector-menu a:hover:not(:focus) {
-    background: rgba(0, 0, 0, 0.6);
+.item:not(:last-child) {
+    border-bottom: 1px solid #dedede;
 }
 
-.selector-menu a:focus {
-    transform: scale(1.2);
-    background: rgba(0, 0, 0, 0.9);
-    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.6);
+.item:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+@media (max-height: 500px) {
+    body {
+        flex-direction: row;
+    }
+
+    .selector {
+        flex-direction: column;
+        margin-right: 25px;
+    }
 }
