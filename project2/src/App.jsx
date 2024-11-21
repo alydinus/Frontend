@@ -1,7 +1,6 @@
 import './App.css';
 const name = 'Алыдин';
 function App() {
-
     return (
         <div className="person-info">
             <h2>Имя : {name}</h2>
@@ -10,6 +9,7 @@ function App() {
             <p>Возраст: 69</p>
             <p>Пол: ламинат</p>
             <p>Рост: 185</p>
+            <button onClick={"clicked"}>Кнопка</button>
         </div>
     );
 }
