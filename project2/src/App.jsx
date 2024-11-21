@@ -19,7 +19,7 @@ function App() {
             <p>Пол: ламинат</p>
             <p>Рост: 185</p>
             {message && <p>{message}</p>}
-            <button onClick={handleClick}>Кнопка</button>
+            <button onClick={handleClick}>Повысить в должности</button>
         </div>
     );
 }
