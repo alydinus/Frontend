@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 
 function App() {
     const [data, setData] = useState([]);
@@ -12,5 +12,21 @@ function App() {
         };
         fetchData();
     }, []);
+
+    const filteredData = data.filter(item =>
+        item.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    return (
+        <div>
+            {/* ... */}
+            <ul>
+                {filteredData.map(item => (
+                    <li key={item.id}>{item.name}</li>
+                ))}
+            </ul>
+        </div>
+    );
 }
+
 export default App;
