@@ -1,5 +1,5 @@
 import "./index.css";
-import {useState} from "react";
+import { useState, useEffect } from "react";
 
 function App() {
     const [calc, setCalc] = useState("");
@@ -17,8 +17,12 @@ function App() {
 
         setCalc(calc + value);
 
-        if (!ops.includes(value)) {
-            setResult(eval(calc + value).toString());
+        try { // Add try-catch for invalid expressions
+            if (!ops.includes(value)) {
+                setResult(eval(calc + value).toString());
+            }
+        } catch (error) {
+            setResult("Error"); // Or handle the error as you prefer
         }
     }
 
@@ -31,7 +35,11 @@ function App() {
     }
 
     const calculate = () => {
-        setCalc(eval(calc).toString());
+        try { // Add try-catch for invalid expressions
+            setCalc(eval(calc).toString());
+        } catch (error) {
+            setCalc("Error"); // Or handle the error as you prefer
+        }
     }
 
     const deleteLast = () => {
@@ -40,7 +48,41 @@ function App() {
         }
         const value = calc.slice(0, -1);
         setCalc(value);
+        try {
+            if (value !== "") {
+                setResult(eval(value).toString());
+            } else {
+                setResult("");
+            }
+        } catch (error) {
+            setResult("");
+        }
     }
+
+    useEffect(() => {
+        const handleKeyDown = (event) => {
+            const key = event.key;
+
+            if (/[0-9]/.test(key)) {
+                updateCalc(key);
+            } else if (ops.includes(key)) {
+                updateCalc(key);
+            } else if (key === "=" || key === "Enter") {
+                calculate();
+            } else if (key === "Backspace") {
+                deleteLast();
+            } else if (key === ".") {
+                updateCalc(".");
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [calc]); // Add calc as dependency
+
     return (
         <div className="App">
             <div className="calculator">
