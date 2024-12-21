@@ -35,7 +35,7 @@ function App() {
     }
 
     const calculate = () => {
-        try { // Add try-catch for invalid expressions
+        try {
             setCalc(eval(calc).toString());
         } catch (error) {
             setCalc("Error");
