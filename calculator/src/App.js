@@ -17,12 +17,12 @@ function App() {
 
         setCalc(calc + value);
 
-        try { // Add try-catch for invalid expressions
+        try {
             if (!ops.includes(value)) {
                 setResult(eval(calc + value).toString());
             }
         } catch (error) {
-            setResult("Error"); // Or handle the error as you prefer
+            setResult("Error");
         }
     }
 
@@ -38,7 +38,7 @@ function App() {
         try { // Add try-catch for invalid expressions
             setCalc(eval(calc).toString());
         } catch (error) {
-            setCalc("Error"); // Or handle the error as you prefer
+            setCalc("Error");
         }
     }
 
@@ -81,7 +81,7 @@ function App() {
         return () => {
             window.removeEventListener('keydown', handleKeyDown);
         };
-    }, [calc]); // Add calc as dependency
+    }, [calc]);
 
     return (
         <div className="App">
